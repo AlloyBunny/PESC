@@ -39,7 +39,7 @@ pip install chromadb
 
 ## 数据下载
 
-在运行代码之前，请先下载数据集：
+在运行代码之前，请先下载数据：
 
 👉 [数据下载链接](https://drive.google.com/file/d/1rCoou-1xb9SMxSkdQUTmbP0O9TKMczUs/view?usp=sharing)
 

@@ -39,9 +39,9 @@ pip install chromadb
 
 ## Data Preparation
 
-Before running the code, please download the dataset from the following link:
+Before running the code, please download the data from the following link:
 
-👉 [Download dataset](https://drive.google.com/file/d/1rCoou-1xb9SMxSkdQUTmbP0O9TKMczUs/view?usp=sharing)
+👉 [Download data](https://drive.google.com/file/d/1rCoou-1xb9SMxSkdQUTmbP0O9TKMczUs/view?usp=sharing)
 
 After downloading, extract the archive to the project root directory. The directory structure should look like:
 
