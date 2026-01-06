@@ -1,0 +1,39 @@
+    # 【原参数】
+    # --per_device_train_batch_size 1 \
+    # --per_device_eval_batch_size 1 \
+    # --gradient_accumulation_steps 8 \
+
+    # 【修改后】
+    # --per_device_train_batch_size 4 \
+    # --per_device_eval_batch_size 4 \
+    # --gradient_accumulation_steps 2 \
+
+CUDA_VISIBLE_DEVICES=1 \
+swift rlhf \
+    --rlhf_type dpo \
+    --model models/Llama-3.1-8B-Instruct \
+    --model_type llama3_1 \
+    --train_type lora \
+    --dataset dataset/train_dpo_zh.jsonl \
+    --val_dataset dataset/val_dpo_zh_sample1000.jsonl \
+    --torch_dtype bfloat16 \
+    --tf32 false \
+    --num_train_epochs 3 \
+    --per_device_train_batch_size 4 \
+    --per_device_eval_batch_size 4 \
+    --learning_rate 5e-5 \
+    --lora_rank 8 \
+    --lora_alpha 32 \
+    --target_modules all-linear \
+    --gradient_accumulation_steps 2 \
+    --eval_steps 1000 \
+    --save_steps 1000 \
+    --save_total_limit 50 \
+    --logging_steps 10 \
+    --max_length 12288 \
+    --output_dir train_output/dpo_zh/Llama-3.1-8B-Instruct-dpo-zh \
+    --warmup_ratio 0.05 \
+    --gradient_checkpointing true \
+    --rpo_alpha 1.0 \
+    --dataloader_num_workers 8 \
+    --dataset_num_proc 8 \
