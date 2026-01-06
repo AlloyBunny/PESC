@@ -4,9 +4,9 @@ English | [中文](README_ZH.md)
 
 ## Environment Setup
 
-This project requires two separate conda environments.
+This project requires two separate conda environments. Please keep the environment names as `cfbench` and `swift`, as the project scripts automatically activate the corresponding environments.
 
-### Environment 1: cfbench
+### 1. Environment: cfbench
 
 ```bash
 conda create -n cfbench python=3.11
@@ -22,7 +22,7 @@ pip install vllm
 pip install chromadb
 ```
 
-### Environment 2: swift
+### 2. Environment: swift
 
 ```bash
 conda create -n swift python=3.10
@@ -32,15 +32,14 @@ pip install 'ms-swift'
 pip install chromadb
 ```
 
-**Note**: Please keep the environment names as `cfbench` and `swift`, as the project scripts automatically activate the corresponding environments.
-
 ## Data Preparation
 
-### Download Data
+### 1. Download Data
 
-Please download the dataset from the following link: [Data Download](https://drive.google.com/file/d/1rCoou-1xb9SMxSkdQUTmbP0O9TKMczUs/view?usp=sharing)
+1. Download the dataset from the following link: [Data Download](https://drive.google.com/file/d/1rCoou-1xb9SMxSkdQUTmbP0O9TKMczUs/view?usp=sharing)
+2. Extract the archive to the project root directory
 
-After downloading, extract the archive to the project root directory. The directory structure should be as follows:
+The directory structure should be as follows:
 
 ```
 PESC_Data/
@@ -54,49 +53,54 @@ PESC_Data/
 └── profile/
 ```
 
-### Model Preparation
+### 2. Model Preparation
 
 The following base models are required for training and inference:
 - Qwen2.5-7B-Instruct
 - Llama3.1-8B-Instruct
 
-Please download the models and place them in the `models/` directory.
+Download the models and place them in the `models/` directory.
 
 ## Quick Start
 
 ### Training
 
-#### Using Training Scripts
+#### Option 1: Using Training Scripts
 
-The `train_script/dpo/` directory contains DPO training scripts with the same settings as in the paper. The `train_script/sft/` directory contains SFT training scripts.
+1. Navigate to the training script directory:
+   - `train_script/dpo/` contains DPO training scripts with the same settings as in the paper
+   - `train_script/sft/` contains SFT training scripts
 
-For example, to perform DPO training on Llama3.1-8B-Instruct using English data:
+2. Run the training script. For example, to perform DPO training on Llama3.1-8B-Instruct using English data:
 
 ```bash
 bash train_script/dpo/Llama-3.1-8B-Instruct-dpo-en.sh
 ```
 
-#### Using Pre-trained Models
+#### Option 2: Using Pre-trained Models
 
-The `checkpoint/` directory contains LoRA weight files for four trained DPO models. You can directly use `train_script/merge_lora.sh` to merge the LoRA weights and obtain the complete DPO models.
+1. The `checkpoint/` directory contains LoRA weight files for four trained DPO models
+2. Use `train_script/merge_lora.sh` to merge the LoRA weights and obtain the complete DPO models
 
 ### Inference
 
-#### Configure Environment Variables
+#### Step 1: Configure Environment Variables
 
 1. Rename `env.example` to `.env`
-2. Configure API keys and model paths according to your needs
+2. Configure API keys according to your needs
 
-#### Local Model Inference
+#### Step 2: Local Model Inference (Optional)
+
+If you want to use local models for inference:
 
 1. Download the corresponding base models
 2. Use `train_script/merge_lora.sh` to merge LoRA weights (see the "Training" section for details)
-3. Run the corresponding deployment script (`inference_scripts/deploy_*.sh`)
+3. Run the corresponding deployment script (`inference_scripts/deploy_*.sh`) to start the model service
 4. Run the inference script (`inference_scripts/inference_*.sh`)
 
 **Important**: Before using local models for inference, you must first run the corresponding `deploy_*.sh` script to start the model service.
 
-#### Inference Scripts
+#### Step 3: Run Inference Scripts
 
 - `inference_scripts/deploy_*.sh`: Deploy model services using vLLM
 - `inference_scripts/inference_*.sh`: Execute evaluation scripts
