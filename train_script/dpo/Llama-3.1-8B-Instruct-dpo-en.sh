@@ -1,13 +1,4 @@
-    # 【原参数】
-    # --per_device_train_batch_size 1 \
-    # --per_device_eval_batch_size 1 \
-    # --gradient_accumulation_steps 8 \
-
-    # 【修改后】
-    # --per_device_train_batch_size 4 \
-    # --per_device_eval_batch_size 4 \
-    # --gradient_accumulation_steps 2 \
-
+conda activate swift
 CUDA_VISIBLE_DEVICES=0 \
 swift rlhf \
     --rlhf_type dpo \
@@ -15,17 +6,17 @@ swift rlhf \
     --model_type llama3_1 \
     --train_type lora \
     --dataset dataset/train_dpo_en.jsonl \
-    --val_dataset dataset/val_dpo_en_sample1000.jsonl \
+    --val_dataset dataset/val_dpo_en.jsonl \
     --torch_dtype bfloat16 \
     --tf32 false \
-    --num_train_epochs 20 \
-    --per_device_train_batch_size 4 \
-    --per_device_eval_batch_size 4 \
+    --num_train_epochs 3 \
+    --per_device_train_batch_size 1 \
+    --per_device_eval_batch_size 1 \
     --learning_rate 5e-5 \
     --lora_rank 8 \
     --lora_alpha 32 \
     --target_modules all-linear \
-    --gradient_accumulation_steps 2 \
+    --gradient_accumulation_steps 8 \
     --eval_steps 1000 \
     --save_steps 1000 \
     --save_total_limit 50 \
