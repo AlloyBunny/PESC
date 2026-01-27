@@ -9,7 +9,7 @@ import os
 class Llama_3_8B_Instruct():
     def __init__(self, model_name="Llama-3-8B-Instruct", temperature=None, lora_path=None) -> None:
         # 模型路径
-        self.model_path = "/data/zhaiyuxuan/models/Meta-Llama-3-8B-Instruct"
+        self.model_path = "models/Meta-Llama-3-8B-Instruct"
         self.model_name = model_name
         self.temperature = temperature if temperature is not None else 0.7
         self.lora_path = lora_path
