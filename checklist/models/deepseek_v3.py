@@ -6,7 +6,7 @@ from openai import OpenAI
 class deepseek_v3():
     def __init__(self, model_name="deepseek-v3", temperature=None) -> None:
         # deepseek-chat
-        self.api_key = "sk-f0dfdbf0902147e8967ff47797f45d59"
+        self.api_key = ""
         self.base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"
         self.client = OpenAI(api_key=self.api_key, base_url=self.base_url)
         self.model_name = model_name
