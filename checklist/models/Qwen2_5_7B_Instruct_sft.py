@@ -9,7 +9,7 @@ import os
 class Qwen2_5_7B_Instruct_sft():
     def __init__(self, model_name="Qwen2.5-7B-Instruct-sft", temperature=None, lora_path=None) -> None:
         # 模型路径
-        self.model_path = "models/Qwen2.5-7B-Instruct-sft3"
+        self.model_path = "../models/Qwen2.5-7B-Instruct-sft3"
         self.model_name = model_name
         self.temperature = temperature if temperature is not None else 0.7
         self.lora_path = lora_path
