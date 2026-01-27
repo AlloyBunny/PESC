@@ -6,7 +6,7 @@ from openai import OpenAI
 class gpt41():
     def __init__(self, model_name="gpt-4.1", temperature=None) -> None:
         # gpt-4.1
-        self.api_key = "sk-KfpQ2sSngiKecah1b6oUYN6H5efaWpuK8dQWggi1kKa2c0Gl"
+        self.api_key = ""
         self.base_url = "https://pro.xiaoai.plus/v1"
         self.client = OpenAI(api_key=self.api_key, base_url=self.base_url)
         self.model_name = model_name
