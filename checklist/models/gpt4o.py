@@ -6,7 +6,7 @@ from openai import OpenAI
 class gpt4o():
     def __init__(self, model_name="gpt-4o", temperature=None) -> None:
         # gpt-4o-2024-05-13
-        self.api_key = "sk-DICW3Qw9wG2xrd7hs6RxtMOVi980agRjUvCmcafFnoKHmFQG"
+        self.api_key = ""
         self.base_url = "https://pro.xiaoai.plus/v1"
         self.client = OpenAI(api_key=self.api_key, base_url=self.base_url)
         self.model_name = model_name
